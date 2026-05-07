@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:    #0d0a00;
+  --bg-card:    #141006;
+  --bg-raised:  #1c1608;
+  --border:     #2e2200;
+  --accent:     #f5a800;
+  --accent2:    #ff6b2b;
+  --accent3:    #00e5c3;
+  --text-main:  #f0e4c0;
+  --text-muted: #7a6840;
+  --glow-gold:  #f5a80066;
+  --glow-teal:  #00e5c344;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% -10%, #2a1a0055 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, #1a120422 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, #1a120422 40px);
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.font-display { font-family: 'Orbitron', monospace; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.04) 2px,
+    rgba(0,0,0,0.04) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 12px var(--glow-gold); }
+  50%       { box-shadow: 0 0 28px #f5a80099, 0 0 60px #f5a80022; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card-base {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.glow-gold { animation: goldPulse 2.4s ease-in-out infinite; }
+.fade-up   { animation: fadeUp 0.3s ease both; }
